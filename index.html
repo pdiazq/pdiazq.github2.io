@@ -1,0 +1,51 @@
+<FONT COLOR="green">
+<I>
+<h1>El Cambio Climático no se ve a simple vista y menos aún en zonas tropicales. Por eso es necesario hacer un largo recorrido por las temperaturas del siglo pasado en Colombia...
+Estamos registrando la temperatura promedio en Colombia mas alta del siglo!!  
+</h1>
+  </I>
+  </FONT>,
+  <br> &nbsp;
+  <FONT SIZE="3">
+    Datos tomados de:
+  <a href="dirección_URL">
+http://sdwebx.worldbank.org/climateportal/index.cfm?page=downscaled_data_download&menu=historical
+</a>
+    <br> &nbsp;
+<br>
+<B>DATOS IMPORTANTES: </B>
+     
+Se observan picos de temperatura a lo largo del siglo 20, como en 1959, 1984 y justo en el 2016, se está conformando otro pico. En este caso el máximo registrado. Hay que recordar que un solo grado centígrado afecta los ecosistemas.
+  </FONT>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="multiline.css">
+    <script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+    <!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+</head>
+<body>
+<div class="chart-wrapper" id="chart-line1"></div>
+
+<script type="text/javascript">
+    d3.csv('multiline_data.csv', function(error, data) {
+    data.forEach(function (d) {
+       año = +d.año;
+        d.variableA = +d.variableA;
+    });
+
+    var chart = makeLineChart(data, 'año', {
+        'Variable A': {column: 'variableA'},
+    }, {xAxis: 'Años', yAxis: 'Temperatura'});
+    chart.bind("#chart-line1");
+    chart.render();
+
+});
+</script>
+<script src="multiline.js" charset="utf-8"></script>
+</body>
+</html>
